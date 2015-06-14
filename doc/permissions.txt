@@ -1,0 +1,9 @@
+1. User IDs and File Access
+    1) You can use the sharedUserId attribute in the AndroidManifest.xml's manifest tag of each package to have them assigned the same user ID. By doing this, for purposes of security the two packages are then treated as being the same application, with the same user ID and file permissions
+    2) in order to retain security, only two applications signed with the same signature (and requesting the same sharedUserId) will be given the same user ID
+
+2. Using Permissions
+    To make use of protected features of the device, you must include in your AndroidManifest.xml one or more <uses-permission> tags declaring the permissions that your application needs.
+
+3. Declaring and Enforcing Permissions
+    To enforce your own permissions, you must first declare them in your AndroidManifest.xml using one or more <permission> tags.

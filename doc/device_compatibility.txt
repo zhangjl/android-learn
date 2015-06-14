@@ -1,0 +1,19 @@
+1. Device features
+    <manifest ... >
+        <uses-feature android:name="android.hardware.sensor.compass"
+        android:required="true" />
+        ...
+    </manifest>
+
+2. Platform version
+    <manifest ... >
+        <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
+        ...
+    </manifest>
+
+    The minSdkVersion attribute declares the minimum version with which your app is compatible and the targetSdkVersion attribute declares the highest version on which you've optimized your app.
+
+3. Screen configuration
+    screen size: small, normal, large, and xlarge
+    screen density (the physical density of the pixels on the screen, known as DPI):
+        mdpi (medium), hdpi (hdpi), xhdpi (extra high), xxhdpi (extra-extra high), and others
