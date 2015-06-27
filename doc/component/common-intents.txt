@@ -1,0 +1,39 @@
+1. Alarm Clock(2.3 or higher)
+    1) Action: ACTION_SET_ALARM
+    2) Data URI: none
+    3) MIME Type: none
+    4) Extras
+        * EXTRA_HOUR
+        * EXTRA_MINUTES
+        * EXTRA_MESSAGE
+        EXTRA_DAYS: ArrayList
+        EXTRA_RINGTONE: URI specifying a ringtone to use with the alarm, or VALUE_RINGTONE_SILENT for no ringtone.
+        EXTRA_VIBRATE: boolean
+        EXTRA_SKIP_UI: A boolean specifying whether the responding app should skip its UI when setting the alarm. If true, the app should bypass any confirmation UI and simply set the specified alarm.
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+2. Create a timer(4.4 or higher)
+    1) Action: ACTION_SET_TIMER
+    2) Data URI: none
+    3) MIME Type: none
+    4) Extras
+        EXTRA_LENGTH: second
+        EXTRA_MESSAGE
+        EXTRA_SKIP_UI: A boolean specifying whether the responding app should skip its UI when setting the alarm. If true, the app should bypass any confirmation UI and simply set the specified alarm.
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+3. Capture a picture or video and return it
+    1) Action: ACTION_IMAGE_CAPTURE or ACTION_VIDEO_CAPTURE
+    2) Data URI Scheme: none
+    3) MIME Type: none
+    4) Extras
+        EXTRA_OUTPUT: The URI location where the camera app should save the photo or video file (as a Uri object).
+
+4. Select a contact
+    1) Action: ACTION_PICK
+    2) Data URI Scheme: none
+    3) MIME Type: Contacts.CONTENT_TYPE
+
+    # File Storag #
