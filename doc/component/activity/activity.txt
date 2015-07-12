@@ -1,0 +1,27 @@
+    # Creating a Activity #
+1. To create an activity, you must create a subclass of Activity (or an existing subclass of it).
+    1) onCreate
+        You must implement this method. The system calls this when creating your activity. Within your implementation, you should initialize the essential components of your activity. Most importantly, this is where you must call setContentView() to define the layout for the activity's user interface.
+    2) onPause
+        The system calls this method as the first indication that the user is leaving your activity (though it does not always mean the activity is being destroyed). This is usually where you should commit any changes that should be persisted beyond the current user session (because the user might not come back).
+
+    # Implementing a user interface #
+1. Android provides a number of ready-made views that you can use to design and organize your layout
+    1) Widgets
+        are views that provide a visual (and interactive) elements for the screen, such as a button, text field, checkbox, or just an image
+
+    2) Layouts
+        are views derived from ViewGroup that provide a unique layout model for its child views, such as a linear layout, a grid layout, or relative layout.
+
+    3) You can also subclass the View and ViewGroup classes (or existing subclasses) to create your own widgets and layouts and apply them to your activity layout.
+
+    # Using intent filters #
+1. Activities that you don't want to make available to other applications should have no intent filters and you can start them yourself using explicit intents (as discussed in the following section).
+2. However, if you want your activity to respond to implicit intents that are delivered from other applications (and your own), then you must define additional intent filters for your activity. For each type of intent to which you want to respond, you must include an <intent-filter> that includes an <action> element and, optionally, a <category> element and/or a <data> element. These elements specify the type of intent to which your activity can respond.
+
+    # Starting an Activity #
+1. When working within your own application, you'll often need to simply launch a known activity. You can do so by creating an intent that explicitly defines the activity you want to start, using the class name. For example, here's how one activity starts another activity named SignInActivity:
+
+    Intent intent = new Intent(this, SignInActivity.class);
+    startActivity(intent);
+2. Sometimes, you might want to receive a result from the activity that you start. In that case, start the activity by calling startActivityForResult() (instead of startActivity()). To then receive the result from the subsequent activity, implement the onActivityResult() callback method. When the subsequent activity is done, it returns a result in an Intent to your onActivityResult() method.

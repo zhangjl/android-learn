@@ -1,0 +1,29 @@
+    # Creating a Fragment #
+1. To create a fragment, you must create a subclass of Fragment (or an existing subclass of it).
+2. Usually, you should implement at least the following lifecycle methods:
+    onCreate
+    onCreateView
+        The system calls this when it's time for the fragment to draw its user interface for the first time. To draw a UI for your fragment, you must return a View from this method that is the root of your fragment's layout. You can return null if the fragment does not provide a UI.
+    onPause
+3. There are also a few subclasses that you might want to extend, instead of the base Fragment class:
+    DialogFragment
+    ListFragment
+    PreferenceFragment
+
+    # Adding a user interface #
+To provide a layout for a fragment, you must implement the onCreateView() callback method, which the Android system calls when it's time for the fragment to draw its layout. Your implementation of this method must return a View that is the root of your fragment's layout.
+
+    # Adding a fragment to an activity #
+1. There are two ways you can add a fragment to the activity layout:
+    1) Declare the fragment inside the activity's layout file.
+    2) Or, programmatically add the fragment to an existing ViewGroup
+        - At any time while your activity is running, you can add fragments to your activity layout. You simply need to specify a ViewGroup in which to place the fragment.
+        - You can get an instance of FragmentTransaction from your Activity like this:
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        - You can then add a fragment using the add() method, specifying the fragment to add and the view in which to insert it. For example:
+            ExampleFragment fragment = new ExampleFragment();
+            fragmentTransaction.add(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+    3) If you do not call addToBackStack() when you perform a transaction that removes a fragment, then that fragment is destroyed when the transaction is committed and the user cannot navigate back to it. Whereas, if you do call addToBackStack() when removing a fragment, then the fragment is stopped and will be resumed if the user navigates back.
+    4) You can commit a transaction using commit() only prior to the activity saving its state (when the user leaves the activity). If you attempt to commit after that point, an exception will be thrown. This is because the state after the commit can be lost if the activity needs to be restored. For situations in which its okay that you lose the commit, use commitAllowingStateLoss().
